@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resources :decks
+  resources :decks do
+    resources :cards
+  end
 end

@@ -1,0 +1,18 @@
+<div><%= @question %></div>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#<%= @id %>" aria-expanded="true" aria-controls="collapseOne">
+          Show Answer
+        </a>
+      </h4>
+    </div>
+    <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <%= @answer %>
+      </div>
+    </div>
+  </div>
+</div>

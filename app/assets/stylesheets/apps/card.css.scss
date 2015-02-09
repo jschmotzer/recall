@@ -1,0 +1,20 @@
+#main-region {
+  width: 50%;
+  float: left;
+  margin-top: 75px;
+}
+
+.slides {
+  position: relative;
+}
+
+.card {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  display: none;
+  text-align: center;
+}
+
+.active {
+  display: block;
+}

@@ -1,12 +1,14 @@
 @Recall.module "DecksApp.List", (List, App, Backbone, Marionette, $, _) ->
 
-  List.Controller = 
+  class List.Controller extends App.Controllers.Base 
 
-    listDecks: ->
-      decks = App.request "deck:entities"  
+    initialize: ->
+      decks = App.request "deck:entities"
 
+      @listDecks(decks)
+      
+    listDecks: (decks)->
       @view = @getDeckView(decks)
-
       App.leftPaneRegion.show @view
 
     getDeckView: (decks) ->
