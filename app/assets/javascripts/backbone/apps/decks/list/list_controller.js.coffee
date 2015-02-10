@@ -5,12 +5,25 @@
     initialize: ->
       decks = App.request "deck:entities"
 
-      @listDecks(decks)
-      
+      @layout = @getLayoutView decks
+
+      @listenTo @layout, 'show', =>
+        @listDecks decks
+
+      @show @layout
+
     listDecks: (decks)->
-      @view = @getDeckView(decks)
-      App.leftPaneRegion.show @view
+      view = @getDeckView(decks)
+
+      @listenTo view, 'childview:deck:name:clicked', (child, args) ->
+        App.vent.trigger 'deck:name:clicked', args.model
+
+      @layout.decksRegion.show view
 
     getDeckView: (decks) ->
       new List.View
-        collection: decks  
+        collection: decks
+
+    getLayoutView: (decks) ->
+      new List.Layout
+        collection: decks
